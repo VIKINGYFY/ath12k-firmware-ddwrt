@@ -1,0 +1,24 @@
+//Number of VAPs
+{"Mode": 0,"num vap":34}    // Max VAP support is 17 per MAC
+{"Mode": 1,"num vap":18}    // Max VAP support is 9 per MAC
+{"Mode": 2,"num vap":18}    // Max VAP support is 9 per MAC
+
+//Number of clients
+{"Mode":0, "num clients":512}   // Max client support is 512 for both single MAC and dual MAC
+{"Mode":1, "num clients":256}   // Max client support is 128 per MAC
+{"Mode":2, "num clients":128}   // Max client support is 128 
+
+// Please do not reduce the default configuration while working in QWRAP Mode.
+
+//AFC Proxy ,Deployment type ,Power mode mask INI configuration
+{"afc_local_rsvd":0,"Deployment_Type":1,"Power_mode_mask":7}
+
+// TWT memory sizing (active only when CONFIG_TWT_MEMORY_SIZING is defined)
+// If a field is 0, firmware uses its hardcoded default.
+{"twt_ap_sta_count":200}
+{"twt_max_session_per_sta":0}
+{"twt_max_btwt_session_per_vdev":0}
+{"twt_ap_slots_per_pdev":0}
+{"twt_ap_slot_peer_stats_size":0}
+
+иo.┌абЛC╠ДfmV─'/Н\>в$]Ну&▒╙бStГ
