@@ -1,5 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-# Preserve vendor firmware message dictionaries byte for byte.
+# Preserve vendor firmware payloads and configuration byte for byte.
 *.msc binary
+*.bin binary
