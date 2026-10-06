@@ -15,3 +15,12 @@ https://github.com/mirror/dd-wrt/tree/master/src/router/firmwares/wireless/ath12
 BE6500 的已归档实机对照中，AHB WBE 1.7 / PCI WBE 1.6 在启用 WSI 拓扑后
 发生初始化崩溃，换用这套 1.6 配对后恢复双频 AP。此验证范围不包含其他机型的实机验收，
 也不代表 MLO 双链路客户端、长时稳定性或吞吐问题已完整验证。
+
+## DD-WRT 固件同步（2026-10-07）
+
+来源为用户提供的 `dd-wrt-router_firmwares_wireless_ath12k.zip`，SHA256：
+`da38f099db871181486f7c57984c69c59e9d2f94631d3deda2d4d14ef02b519d`。按目录逐文件核对提供的固件及配置；`mem_headroom_check.sh`、`mem_headroom.txt` 属于分析工具，保留在来源 ZIP 中。
+
+| 芯片 | 固件版本 | 仓库目录 | 验证范围 |
+|---|---|---|---|
+| IPQ5424 | WLAN.WBE.1.7-01733 | `IPQ5424/hw1.0` | 文件完整性和源码归档；未实机验证 |
