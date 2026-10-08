@@ -52,3 +52,13 @@ IPQ5332 的 `5332.wlanfw.eval`、`5332.wlan_fw2.mia_peb_eval` 和
 QCN9589 和 QCN9625 文件按硬件版本整理，原 `QCN9625_V2` 移至
 `QCN9625/hw2.0`；固件内容及内部版本保持不变。QCN6432 尚无可核验的固件来源，
 不使用其他芯片的载荷代替。
+
+## Windows 检出兼容
+
+Windows 将 `AUX` 及带扩展名的 `aux.bin` 视为保留设备名，Git 无法检出该路径。
+QCN9589、QCN9625 hw1.0/hw2.0 的辅助固件现以 `aux_ucode.bin` 保存，
+与 Linux ath12k 的 `ATH12K_AUX_UC_FILE` 文件名一致；文件内容没有变化。
+此前的失败克隆可在更新到本仓库新提交后正常检出，不需要关闭 `core.protectNTFS`。
+
+如果旧版 DD-WRT 驱动明确请求 `aux.bin`，应在 Linux 的安装阶段将
+`aux_ucode.bin` 安装为 `aux.bin`；不要在 Windows 工作树中创建这个保留文件名。
