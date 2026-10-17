@@ -40,6 +40,7 @@ IPQ5332 的 `5332.wlanfw.eval`、`5332.wlan_fw2.mia_peb_eval` 和
 
 | ath12k 硬件标识 | 仓库目录 | 固件载荷 |
 |---|---|---|
+| `ATH12K_HW_QCN9274_HW10` | `QCN9274/hw1.0` | Qualcomm 公开 r4-00159，详见目录说明及原始许可 |
 | `ATH12K_HW_QCN9274_HW20` | `QCN9274/hw2.0` | 已有 |
 | `ATH12K_HW_WCN7850_HW20` | `WCN7850/hw2.0` | 已有 |
 | `ATH12K_HW_IPQ5332_HW10` | `IPQ5332/hw1.0` | 已有 |
