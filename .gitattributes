@@ -4,6 +4,8 @@
 # Preserve vendor firmware payloads and configuration byte for byte.
 *.msc binary
 *.bin binary
+*.mdt binary
+*.b[0-9][0-9] binary
 
 # Keep the original vendor notice byte for byte.
 /QCN9274/hw1.0/Notice.txt binary

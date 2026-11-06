@@ -16,31 +16,39 @@ BE6500 的已归档实机对照中，AHB WBE 1.7 / PCI WBE 1.6 在启用 WSI 拓
 发生初始化崩溃，换用这套 1.6 配对后恢复双频 AP。此验证范围不包含其他机型的实机验收，
 也不代表 MLO 双链路客户端、长时稳定性或吞吐问题已完整验证。
 
-## DD-WRT 固件同步（2026-10-07）
+## DD-WRT 固件同步（2026-11-07）
 
-来源为用户提供的 `dd-wrt-router_firmwares_wireless_ath12k.zip`，SHA256：
-`da38f099db871181486f7c57984c69c59e9d2f94631d3deda2d4d14ef02b519d`。按目录逐文件核对提供的固件及配置；`mem_headroom_check.sh`、`mem_headroom.txt` 属于分析工具，保留在来源 ZIP 中。
+DD-WRT 固定来源：[c5b9d5d25e10](https://github.com/mirror/dd-wrt/tree/c5b9d5d25e10c170419729b19b2e1a79d58871d4/src/router/firmwares/wireless/ath12k)。
+对应的最近固件更新提交为 `8fce77470c94`。固件及配置按 Git blob 核对；
+`mem_headroom_check.sh`、`mem_headroom.txt` 属于分析工具，不作为固件载荷收录。
 
 | 芯片 | 固件版本 | 仓库目录 | 验证范围 |
 |---|---|---|---|
-| IPQ5424 | WLAN.WBE.1.7-01733 | `IPQ5424/hw1.0` | 文件完整性和源码归档；未实机验证 |
-| QCN9589 | WLAN.WBO.1.0-01618 | `QCN9589/hw1.0` | 文件完整性和源码归档；未实机验证 |
-| QCN9625 | WLAN.WBO.1.0-01618 | `QCN9625/hw1.0` | 文件完整性和源码归档；未实机验证 |
-| QCN9625 V2 | WLAN.WBO.1.0-01618 | `QCN9625/hw2.0` | 文件完整性和源码归档；未实机验证 |
+| IPQ5424 | WLAN.WBE.1.7-01831 | `IPQ5424/hw1.0` | 文件完整性；未实机验证 |
+| QCN9589 | WLAN.WBO.1.0-01765 | `QCN9589/hw1.0` | 文件完整性；未实机验证 |
+| QCN9625 | WLAN.WBO.1.0-01765 | `QCN9625/hw1.0` | 文件完整性；未实机验证 |
+| QCN9625 V2 | WLAN.WBO.1.0-01765 | `QCN9625/hw2.0` | 文件完整性；未实机验证 |
 
-IPQ5332 的 `5332.wlanfw.eval`、`5332.wlan_fw2.mia_peb_eval` 和
-`5332.wlan_fw2.mia_peb_peb_eval_cs` 三个 `WLAN.WBE.1.7-01733` 候选，
-已在 BE6500 当前驱动、WSI 拓扑及 QCN9274 `WLAN.WBE.1.6-01270` 配套下分别进行启动阶段测试。
-每次核对实际加载的 20 个 MDT/分段文件后，均观察到 Q6 `type fatal error` 和
-`rootPD crashed`，未通过初始化，未开展吞吐验收。测试后恢复原固件和双频 AP，
-因此本仓库 IPQ5332 保留原来的 1.6 配对。这一结果仅适用于上述硬件与软件组合，
-不用于判断候选在其他板型或完整 1.7 配套中的兼容性。
+IPQ5332 默认继续提供 `WLAN.WBE.1.6-01270`，用于当前 WSI 配套。
+DD-WRT 的三种 `WLAN.WBE.1.7-01831` 评估镜像不作为该组合的默认载荷。
+不同板型或完整 1.7 配套的兼容性须单独核验。
+
+## QCN9274 HW1.0
+
+`QCN9274/hw1.0` 的 AMSS/M3 更新至 `WLAN.WBE.1.0-02903-QCAHKSWPL_SILICONZ-1`。
+来源为 Qualcomm 公开固件仓库的[固定提交 c6e9f96890bc](https://github.com/quic/upstream-wifi-fw/tree/c6e9f96890bc70efe97e536db23c97ee18460369/ath12k-firmware/QCN9274/hw1.0/testing/1.0/WLAN.WBE.1.0-02903-QCAHKSWPL_SILICONZ-1)。
+原始 `Notice.txt` 一并保留，板级数据和校准文件由设备固件提供。
+BE7000 ES 已验证基本连接、受控单链路流量和流量后的驱动重载；
+此范围不代表长期稳定性、MLO 客户端或全部 RDDM 触发场景已验证。
+
+所有硬件目录均提供 `fw_version.txt`，可识别版本与二进制内嵌版本核对。
+QCN6432 尚缺完整载荷，其版本文件明确标为 `UNAVAILABLE`。
 
 ## 硬件版本目录
 
 | ath12k 硬件标识 | 仓库目录 | 固件载荷 |
 |---|---|---|
-| `ATH12K_HW_QCN9274_HW10` | `QCN9274/hw1.0` | Qualcomm 公开 r4-00159，详见目录说明及原始许可 |
+| `ATH12K_HW_QCN9274_HW10` | `QCN9274/hw1.0` | Qualcomm 公开 02903，原始许可见 `Notice.txt` |
 | `ATH12K_HW_QCN9274_HW20` | `QCN9274/hw2.0` | 已有 |
 | `ATH12K_HW_WCN7850_HW20` | `WCN7850/hw2.0` | 已有 |
 | `ATH12K_HW_IPQ5332_HW10` | `IPQ5332/hw1.0` | 已有 |
@@ -50,9 +58,8 @@ IPQ5332 的 `5332.wlanfw.eval`、`5332.wlan_fw2.mia_peb_eval` 和
 | `ATH12K_HW_QCN9625_HW20` | `QCN9625/hw2.0` | 已有 |
 | `ATH12K_HW_QCN9589_HW10` | `QCN9589/hw1.0` | 已有 |
 
-QCN9589 和 QCN9625 文件按硬件版本整理，原 `QCN9625_V2` 移至
-`QCN9625/hw2.0`；固件内容及内部版本保持不变。QCN6432 尚无可核验的固件来源，
-不使用其他芯片的载荷代替。
+QCN9589 和 QCN9625 文件按硬件版本整理，原 `QCN9625_V2` 对应
+`QCN9625/hw2.0`。QCN6432 尚缺完整载荷，不使用其他芯片的载荷代替。
 
 ## Windows 检出兼容
 

@@ -1,0 +1,2 @@
+UNAVAILABLE
+No complete firmware payload is present in this directory; see README.md.
